@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\Product;
 use Livewire\Component;
 
-class Editmodal extends Component
+class EditModal extends Component
 {
     public $showModal = false;
     public $product;
@@ -17,7 +17,7 @@ class Editmodal extends Component
 
     public function render()
     {
-        return view('livewire.editmodal', ['products' => Product::all()]);
+        return view('livewire.edit-modal', ['products' => Product::all()]);
     }
 
     public function edit($productId)
@@ -28,8 +28,8 @@ class Editmodal extends Component
 
     public function save()
     {
-        $this->product->save();
-        $this->showModal = false;
+        $this->product->save();//save
+        $this->showModal = false;//hide
     }
 
     public function close()

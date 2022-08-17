@@ -1,6 +1,9 @@
 <div class="card-body">
+    {{--  ordinary submit to controller  --}}
     <form action="{{ route('parentchildren.submit') }}" method="POST">
         @csrf
+
+        {{-- Not a livewire --}}
         <div class="form-group {{ $errors->has('customer_name') ? 'has-error' : '' }}">
             Customer name
             <input type="text" name="customer_name" class="form-control"
@@ -11,6 +14,8 @@
                 </em>
             @endif
         </div>
+
+        {{-- Not a livewire --}}
         <div class="form-group {{ $errors->has('customer_email') ? 'has-error' : '' }}">
             Customer email
             <input type="email" name="customer_email" class="form-control"
@@ -42,7 +47,8 @@
                             <td>
                                 <select name="orderProducts[{{$index}}][product_id]"
                                         wire:model="orderProducts.{{$index}}.product_id"
-                                        class="form-control">
+                                        class="form-control"
+                                >
                                     <option value="">-- choose product --</option>
                                     @foreach ($allProducts as $product)
                                         <option value="{{ $product->id }}">
@@ -53,9 +59,10 @@
                             </td>
                             <td>
                                 <input type="number"
-                                       name="orderProducts[{{$index}}][quantity]"
                                        class="form-control"
-                                       wire:model="orderProducts.{{$index}}.quantity" />
+                                       name="orderProducts[{{$index}}][quantity]"
+                                       wire:model="orderProducts.{{$index}}.quantity"
+                                />
                             </td>
                             <td>
                                 <a href="#" wire:click.prevent="removeProduct({{$index}})">Delete</a>

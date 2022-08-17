@@ -1,4 +1,5 @@
 <div class="card-body">
+    {{--  ordinary submit to controller  --}}
     <form action="{{ route('dropdowns.submit') }}" method="POST">
         @csrf
         <div class="form-group row">
@@ -6,7 +7,7 @@
 
             <div class="col-md-6">
                 <select wire:model="country" name="country" class="form-control">
-                    <option value="">-- choose country --</option>
+                    <option value="">-- Choose country --</option>
                     @foreach ($countries as $country)
                         <option value="{{ $country->id }}">{{ $country->name }}</option>
                     @endforeach
@@ -20,7 +21,7 @@
             <div class="col-md-6">
                 <select wire:model="city" name="city" class="form-control">
                     @if ($cities->count() == 0)
-                        <option value="">-- choose country first --</option>
+                        <option value="">-- Choose country first --</option>
                     @endif
                     @foreach ($cities as $city)
                         <option value="{{ $city->id }}">{{ $city->name }}</option>
